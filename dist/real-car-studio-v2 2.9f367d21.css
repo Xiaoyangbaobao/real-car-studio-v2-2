@@ -1,0 +1,172 @@
+:root {
+  --bg: #050608;
+  --panel: #080a0e80;
+  --panel-border: #ffffff24;
+  --text: #f5f7fb;
+  --muted: #f5f7fbb3;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+html, body {
+  background: var(--bg);
+  width: 100%;
+  height: 100%;
+  color: var(--text);
+  margin: 0;
+  font-family: Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, Segoe UI, sans-serif;
+  overflow: hidden;
+}
+
+#webgl {
+  display: block;
+  position: fixed;
+  inset: 0;
+}
+
+.loading-overlay {
+  z-index: 30;
+  background: radial-gradient(circle, #3c4a602e, #0000 40%), linear-gradient(#040609fa, #06090df5);
+  place-items: center;
+  transition: opacity .8s, visibility .8s;
+  display: grid;
+  position: fixed;
+  inset: 0;
+}
+
+.loading-overlay.is-hidden {
+  opacity: 0;
+  visibility: hidden;
+}
+
+.loading-inner {
+  text-align: center;
+  width: min(90vw, 560px);
+}
+
+.eyebrow {
+  letter-spacing: .28em;
+  text-transform: uppercase;
+  color: #fff9;
+  margin-bottom: 12px;
+  font-size: 11px;
+}
+
+.loading-inner h1, .brand h2 {
+  margin: 0 0 12px;
+  font-weight: 600;
+  line-height: 1.05;
+}
+
+.loading-inner h1 {
+  font-size: clamp(32px, 6vw, 66px);
+}
+
+.loading-inner p, .brand p {
+  color: var(--muted);
+  margin: 0;
+  line-height: 1.55;
+}
+
+.hud {
+  z-index: 20;
+  pointer-events: none;
+  justify-content: space-between;
+  align-items: flex-start;
+  padding: 28px;
+  display: flex;
+  position: fixed;
+  inset: 0;
+}
+
+.brand, .panel {
+  opacity: 0;
+  transition: opacity .8s, transform .8s;
+  transform: translateY(16px);
+}
+
+body.intro-complete .brand, body.intro-complete .panel {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.brand {
+  max-width: 380px;
+}
+
+.brand h2 {
+  font-size: clamp(28px, 3vw, 40px);
+}
+
+.panel {
+  border: 1px solid var(--panel-border);
+  background: var(--panel);
+  backdrop-filter: blur(16px);
+  pointer-events: none;
+  border-radius: 20px;
+  width: min(320px, 100vw - 56px);
+  padding: 18px;
+  box-shadow: 0 18px 40px #00000040;
+}
+
+body.intro-complete .panel {
+  pointer-events: auto;
+}
+
+.panel section + section {
+  margin-top: 18px;
+}
+
+.panel h3 {
+  color: #ffffffe6;
+  margin: 0 0 10px;
+  font-size: 13px;
+  font-weight: 600;
+}
+
+.button-grid {
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 10px;
+  display: grid;
+}
+
+.button-grid button:first-child:last-child {
+  grid-column: 1 / -1;
+}
+
+button {
+  appearance: none;
+  color: #fff;
+  cursor: pointer;
+  font: inherit;
+  background: #ffffff0a;
+  border: 1px solid #ffffff29;
+  border-radius: 12px;
+  padding: 12px 14px;
+  transition: transform .2s, background .2s, border-color .2s;
+}
+
+button:hover {
+  background: #ffffff17;
+  transform: translateY(-1px);
+}
+
+button.is-active {
+  background: #ffffff29;
+  border-color: #ffffff73;
+}
+
+@media (width <= 900px) {
+  .hud {
+    flex-direction: column;
+    justify-content: space-between;
+    padding: 18px;
+  }
+
+  .panel {
+    width: 100%;
+  }
+}
+/*# sourceMappingURL=real-car-studio-v2 2.9f367d21.css.map */
